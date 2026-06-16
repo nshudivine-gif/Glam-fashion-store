@@ -5,10 +5,10 @@ A chic, fully responsive e-commerce storefront designed for a curated boutique f
 ---
 
 ## 👤 Developer Information
-* **Student Name:** [Your Name]
-* **Student ID:** [Your Student ID / Registration Number]
-* **Course/Class:** [Your Course Name / Batch]
-* **Institution:** [Your Institution Name]
+* **Student Name: Divine NSHUTI
+* **Student ID:24140/2024
+* **Course/Class:E-commerce and web Application
+* **Institution:UNIVERSITY OF LAY ADVENTIST OF KIGALI (UNILAK)
 
 ---
 
