@@ -1,60 +1,106 @@
-# 👗 Glam Fashion Store – Your Style, Your Story
+# 👗 Glam Fashion Store
 
-A chic, fully responsive e-commerce storefront designed for a curated boutique fashion brand based in Kigali, Rwanda. The web application features an elegant design style, a dynamic product grid with live category filtering, an interactive shopping cart, and a structured PHP/MySQL backend architecture.
-
----
-
-## 👤 Developer Information
-* **Student Name: Divine NSHUTI
-* **Student ID:24140/2024
-* **Course/Class:E-commerce and web Application
-* **Institution:UNIVERSITY OF LAY ADVENTIST OF KIGALI (UNILAK)
+A beautiful pink-themed e-commerce fashion store built with HTML, CSS, JavaScript, PHP, and MySQL.
 
 ---
 
-## 📑 Project Overview
-* **Project Title:** Glam Fashion Store E-Commerce Frontend & Backend Connection
-* **Platform Used:** Web Browser (Desktop, Tablet, Mobile)
-* **Target Location:** Kigali, Rwanda
+## 📁 Project Structure
+
+```
+fashionstore/
+├── index.html              ← Main website (homepage)
+├── database.sql            ← Run this in MySQL Workbench
+├── Dockerfile              ← For Docker containerization
+├── docker-compose.yml      ← Runs web + database together
+├── css/
+│   └── style.css           ← All styles (pink theme)
+├── js/
+│   └── app.js              ← Cart, products, checkout logic
+├── php/
+│   ├── db.php              ← Database connection (edit credentials)
+│   ├── get_products.php    ← API: fetch products
+│   ├── get_categories.php  ← API: fetch categories
+│   ├── place_order.php     ← API: submit an order
+│   ├── add_product.php     ← API: admin adds product
+│   ├── admin_orders.php    ← API: view all orders
+│   └── admin_stats.php     ← API: dashboard stats
+├── admin/
+│   └── index.html          ← Admin dashboard
+└── .github/
+    └── workflows/
+        └── deploy.yml      ← CI/CD pipeline
+```
 
 ---
 
-## ✨ Features Implemented
+## 🚀 Setup Instructions (XAMPP/WAMP)
 
-### 🎨 Frontend UI/UX
-* **Elegant Visual Theme:** Premium layout utilizing custom typography (`Playfair Display` and `Poppins`) alongside smooth interactive transitions.
-* **Responsive Layout:** Fluid designs using CSS Flexbox and Grid, optimizing performance seamlessly from small smartphone screens to wide desktop monitors.
-* **Interactive Navigation & Hero:** Sticky navigation layout paired with a clean call-to-action hero banner introducing seasonal collections.
+### Step 1 – Set up the Database
+1. Open **MySQL Workbench**
+2. Connect to your local MySQL server
+3. Open `database.sql` (File → Open SQL Script)
+4. Click **Execute** (⚡ button)
+5. You should see the `glam_fashion` database created with sample products
 
-### 🛍️ E-Commerce Logic
-* **Dynamic Product Filtering:** Category control tags ("All", "Accessories", "Bottoms", "Dresses", etc.) allowing instant inventory updates.
-* **Live Product Search:** Interactive search bar element to seamlessly crawl item listings.
-* **Slide-out Cart & Checkout Modal:** Animated shopping cart component managing real-time calculations alongside an embedded user checkout form.
+### Step 2 – Run with XAMPP or WAMP
+1. Copy the **entire `fashionstore` folder** into:
+   - XAMPP → `C:/xampp/htdocs/fashionstore`
+   - WAMP  → `C:/wamp64/www/fashionstore`
+2. Start **Apache** and **MySQL** from XAMPP/WAMP control panel
+3. Open your browser and go to:
+   - 🌐 `http://localhost/fashionstore`
+   - 🔧 Admin: `http://localhost/fashionstore/admin`
 
-### ⚙️ Backend & Architecture
-* **Modular Configuration:** Clean abstraction separating backend logic (`api.php`), configuration constraints (`db.php`), and core views (`index.php`).
-* **Secure Database Connection:** MySQL object-oriented `mysqli` database mapping built to dynamic JSON response error frameworks.
-
----
-
-## 📸 Interface Screenshots
-
-### 🌅 1. Hero Section
-Features a clean collection introduction banner alongside vibrant marketing highlights.
-![Home Section](Images/Home.jpg)
-
-### 🛒 2. Dynamic Shop Catalog
-Showcases category filter structures, interactive search controls, and the foundational responsive layout structure.
-![Shop Section](Images/Shop.jpg)
-
-### 📈 3. Metrics & About Brand
-Includes live metrics showing historical user tracking metrics and store data.
-![About Section](Images/About.jpg)
-
-### 📍 4. Contact & Footer Frameworks
-Contains localized geographic markers for Kiyovu, Kigali, alongside unified secondary page mapping links.
-![Contact Section](Images/Contact.jpg)
+### Step 3 – Configure DB (if needed)
+Edit `php/db.php` with your credentials:
+```php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');     // your username
+define('DB_PASS', '');         // your password (empty by default in XAMPP)
+define('DB_NAME', 'glam_fashion');
+```
 
 ---
 
-## 🚀 Technical Architecture & Stack
+## 🐳 Docker Setup
+
+```bash
+# Build and run everything (web + database)
+docker-compose up --build
+
+# Visit: http://localhost:8080
+# Admin:  http://localhost:8080/admin
+```
+
+---
+
+## ✨ Features
+
+- 🛍️ Product listing with categories and search
+- 🛒 Shopping cart (add, remove, update quantities)
+- 💳 Checkout with customer details
+- 📦 Order management in database
+- 🎛️ Admin dashboard (products, orders, add products)
+- 📱 Fully responsive mobile design
+- 🗄️ MySQL database with proper relations
+
+---
+
+## 🌐 Deployment Options
+
+| Platform | How |
+|----------|-----|
+| InfinityFree | Upload via FTP, create MySQL DB in dashboard |
+| Railway | Connect GitHub repo, add MySQL plugin |
+| Render | Connect GitHub, set env vars |
+| 000webhost | Upload files, create DB in File Manager |
+
+---
+
+## 📋 Technologies Used
+
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Backend**: PHP 8+
+- **Database**: MySQL (via MySQLi)
+- **DevOps**: Docker, Docker Compose, GitHub Actions (CI/CD)
+- **Design**: Google Fonts (Playfair Display, Poppins)

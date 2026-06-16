@@ -1,0 +1,41 @@
+# ============================================
+#  docker-compose.yml – Glam Fashion Store
+#  Runs PHP + Apache + MySQL together
+# ============================================
+
+version: '3.8'
+
+services:
+
+  # PHP + Apache Web Server
+  web:
+    build: .
+    container_name: glam_web
+    ports:
+      - "8080:80"         # Visit http://localhost:8080
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASS=glampassword
+      - DB_NAME=glam_fashion
+    volumes:
+      - .:/var/www/html   # Live code reloading in dev
+
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: glam_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: glampassword
+      MYSQL_DATABASE: glam_fashion
+    ports:
+      - "3307:3306"       # Access DB on port 3307 from host
+    volumes:
+      - glam_db_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql  # Auto-import DB
+
+volumes:
+  glam_db_data:
